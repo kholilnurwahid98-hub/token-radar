@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — which pre-token protocol is worth farming next</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="eyebrow">TOKEN LAUNCH RADAR &middot; DEFI SNAPSHOT</div>
+  <h1>Token Radar</h1>
+  <p class="lede">Every protocol in the snapshot that records no token yet, ranked by what its
+  launch would be worth &mdash; and what to do about it before it happens.</p>
+  <dl class="stats" id="stats"></dl>
+</header>
+
+<section class="panel controls" aria-label="Filters">
+  <label>Search <input id="q" type="search" placeholder="Name or slug&hellip;" autocomplete="off"></label>
+  <label>Category <select id="cat"><option value="">All categories</option></select></label>
+  <label>Chain <select id="chain"><option value="">All chains</option></select></label>
+  <label class="check"><input id="watchOnly" type="checkbox"> Watchlist only</label>
+  <label>Sort <select id="sort">
+    <option value="rank">Rank (implied value)</option>
+    <option value="tvl">TVL, high to low</option>
+    <option value="growth">7-day change, high to low</option>
+    <option value="age">Age, oldest first</option>
+    <option value="name">Name, A to Z</option>
+  </select></label>
+</section>
+
+<main>
+  <section class="panel" id="boardPanel">
+    <h2 id="boardTitle">The board</h2>
+    <p class="note" id="boardNote"></p>
+    <div class="tablewrap">
+      <table id="board">
+        <thead><tr>
+          <th data-k="rank">#</th><th data-k="name">Protocol</th><th data-k="category">Category</th>
+          <th data-k="chains">Chains</th><th data-k="tvl" class="num">TVL</th>
+          <th data-k="growth" class="num">7d</th><th data-k="age" class="num">Age</th>
+          <th data-k="value" class="num">Implied value</th>
+        </tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p class="note" id="countNote"></p>
+  </section>
+
+  <section class="panel" id="detail" hidden>
+    <h2 id="detailTitle">Protocol detail</h2>
+    <p class="note" id="detailBadges"></p>
+    <dl class="statgrid" id="detailStats"></dl>
+    <h3>How the implied value is computed</h3>
+    <table class="breakdown" id="breakdown"></table>
+    <p class="note" id="breakdownNote"></p>
+    <h3>Farm plan</h3>
+    <ol class="steps" id="steps"></ol>
+  </section>
+
+  <section class="panel" id="livePanel">
+    <h2>Already trading &mdash; the market's own values</h2>
+    <p class="note">These protocols record a token that already trades, so the board does not
+    rank them. Their market cap is shown as a reference only, never as an implied
+    value, and never mixed into the pre-token ranking.</p>
+    <div class="tablewrap">
+      <table id="live">
+        <thead><tr><th>Protocol</th><th>Category</th><th class="num">TVL</th><th class="num">Market cap</th><th class="num">7d</th></tr></thead>
+        <tbody id="liveRows"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel" id="methodPanel">
+    <h2>How the radar works</h2>
+    <p><strong>impliedValue</strong> scores every protocol from the snapshot's own figures
+    only &mdash; never from a list of names:</p>
+    <pre id="formula"></pre>
+    <p id="constants"></p>
+    <p>A protocol <strong>records no token</strong> when the snapshot carries no market cap,
+    no CoinGecko id and no symbol for it. That is DefiLlama's record, not proof: a
+    protocol on the board may still have a token its record does not carry. The
+    implied value is this entry's own claim about what a launch would be worth if
+    the protocol's record stayed as it is. It does not predict whether or when a
+    token is issued.</p>
+    <p>The board ranks every protocol that records no token and is not a wrapped,
+    staked or bridged product of a token that already trades: the 40-protocol
+    watchlist is the floor, and the early rows below it are the radar's own finds.</p>
+  </section>
+</main>
+
+<footer>
+  <p id="source"></p>
+  <p>Token Radar &middot; model radar-2 &middot; data is a sealed snapshot, never fetched live.</p>
+</footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

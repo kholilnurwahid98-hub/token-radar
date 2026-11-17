@@ -1,0 +1,91 @@
+:root {
+  --bg: #0a0f1c;
+  --panel: #101a2e;
+  --panel2: #0d1526;
+  --line: #1e2d47;
+  --text: #e6edf7;
+  --muted: #8fa3bf;
+  --teal: #2dd4bf;
+  --amber: #fbbf24;
+  --green: #4ade80;
+  --red: #f87171;
+  --chip: #16233c;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+.top { padding: 28px 28px 8px; max-width: 1240px; margin: 0 auto; }
+.eyebrow { color: var(--teal); letter-spacing: .14em; font-size: 12px; font-weight: 700; }
+h1 { margin: 6px 0 4px; font-size: 40px; line-height: 1.1; }
+.lede { color: var(--muted); max-width: 760px; margin: 0 0 14px; font-size: 17px; }
+.stats { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 0 0 8px; padding: 0; }
+.stats div { display: flex; flex-direction: column; }
+.stats dt { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+.stats dd { margin: 0; font-size: 22px; font-weight: 700; color: var(--amber); }
+main { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin: 16px 0;
+}
+h2 { margin: 0 0 6px; font-size: 21px; }
+h3 { margin: 18px 0 8px; font-size: 16px; color: var(--teal); }
+.note { color: var(--muted); margin: 0 0 10px; font-size: 13.5px; }
+.controls { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: end; }
+.controls label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.controls label.check { flex-direction: row; align-items: center; text-transform: none; letter-spacing: 0; font-size: 14px; color: var(--text); padding-bottom: 8px; }
+input, select {
+  background: var(--panel2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font: inherit;
+  font-size: 14px;
+}
+input[type="search"] { width: 220px; }
+select { min-width: 150px; }
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; cursor: pointer; }
+th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+tbody tr { cursor: pointer; }
+tbody tr:hover { background: var(--chip); }
+tbody tr.sel { background: #14303a; }
+td.val { color: var(--amber); font-weight: 700; }
+td .slug { color: var(--muted); font-size: 12px; display: block; }
+td .name { font-weight: 600; }
+.badge {
+  display: inline-block; background: var(--chip); border: 1px solid var(--line);
+  border-radius: 999px; padding: 2px 10px; font-size: 12px; margin-right: 6px; color: var(--teal);
+}
+.badge.watch { color: var(--amber); border-color: #5a4310; }
+.up { color: var(--green); }
+.down { color: var(--red); }
+.statgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 0; padding: 0; }
+.statgrid div { background: var(--panel2); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: flex; flex-direction: column; }
+.statgrid dt { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; }
+.statgrid dd { margin: 2px 0 0; font-size: 18px; font-weight: 700; }
+.breakdown td, .breakdown th { cursor: default; white-space: normal; }
+.breakdown td.num { font-variant-numeric: tabular-nums; }
+.steps { margin: 0; padding-left: 22px; }
+.steps li { margin: 10px 0; }
+.steps .meta { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+.steps .meta b { color: var(--teal); font-weight: 600; }
+pre {
+  background: var(--panel2); border: 1px solid var(--line); border-radius: 8px;
+  padding: 12px 14px; overflow-x: auto; font-size: 13px; line-height: 1.6; color: #c9d8ef;
+}
+footer { max-width: 1240px; margin: 0 auto; padding: 4px 28px 28px; color: var(--muted); font-size: 13px; }
+footer p { margin: 4px 0; }
+/* Screenshot view: the detail shot shows the detail section alone, at the top. */
+.shot-detail .top, .shot-detail .controls, .shot-detail #boardPanel,
+.shot-detail #livePanel, .shot-detail #methodPanel, .shot-detail footer { display: none; }
+.shot-detail #detail { margin-top: 20px; }
